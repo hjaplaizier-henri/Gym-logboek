@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Gym Logboek</title>
+  <!-- PWA iPhone installatie -->
+  <meta name="apple-mobile-web-app-title" content="Gym Log">
+  <meta name="theme-color" content="#1B2A4A">
+  <link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAADxUlEQVR4nO3W3a0TQRBE4RsHZEAoBEMAJA9IvJiftte7s1NV3Wd0npG3+hPw8fnLV6L/9iH/BWQbOKgMHFQGDioDB5WBg8rAQWXgoDJw/NGn79/kv8GnQTh+HX5V8m/ZU2ccCzXMtNINxzYQE6B0wCEH0RVKMA757dsricQhP/YQImE45AceRSQDh/yiM5W445CfcDIRaxzyyw33YYpDfjCIOOKQHwkijjjkh/FJfgsvHPJ7uCW/iAsO+SU8k99FjEN+AP+G4pDvntI4HPLFs5qCQz50bs1xyPdNry0O+bI9aohDvmmnWuGQr9mvJjjkO3YtHod8wd4F45BvN6FIHPLV5hSGQ77XtGJwyJeaGTgoGYd8o8lZ45CvQ6Y45LvQ78BBZXY45IvQY0Y45FvQv1ngkK9AVeCgMjEO+ffT88BBZTIc8i+nI4GDygQ45N9Mx9uKQ/619G7goLJNOOTfSecCB5WBg8puxyH/QroSOKjsRhzyb6PrgYPKbsEh/ypaFTioDBxUthiH/HtobeCgMnBQ2Q4cP049+TRZ3THyMhybfzftGRkcHQIHgQMcnXBIfjftGRkc8YGjj7agTcABDnDYFLTJJRydhgDHuz7AAQ5wgAMcDmVtAg5wgMOjrE3AAY4cHLwNDxy88oGDVz5w8MoHDl757sVx5I9WL8Ar30EcT3zwN0fbxz8rvPKBg1c+cPDKl4pj5x+4v6xNwAEOcHiUtQk4wAEOj7I2AQc4wOFR1ibgAMcNOF76yBoCHMdlgAMcUTgIHPrFgwIHBeJ47gMcuThe3h0cAYGDwAGOZjhe/reU4jpydHAMDRxUBg4qW4kDH506eHFwTAwcVLYeBz56dPzc4BjXXTjwkd5btwbHrO7FgY/c3j00OAYFDirbgQMfiZ24MjimtA8HPrI6d+LzOPCR0un7gqN/Ghz48O/KccHRPCUOfDh38bLg6JweBz48u37WNTjw4daSmy7DgQ+fVh0UHA1zxIEPhxZeczEOfLSRcQsOfPSQAY5WZeDARwMZN+LAR7qMe3HgI1rG7TjwkStjBw58hMrYhAMfiTL24cBHnIytOPCRJWM3DnwEyRDgwEeKDA0OiPizEOPAh7kMMQ58OMvQ44CIJwsjHPgwlGGEAx9uMrxwQMSHhSmOsUTkm8fgGEVEvnMkjgk+5AsH42hMRL5qExydlMg3bIsjmoh8txE44ojItxqHw1+JfJmLdcDxGCAW1g3HY4C4WGccf4WGdxuE40hzDn8kcFAZOKgMHFQGDioDB5WBg8rAQWXgoLKfGrKANvSOF7gAAAAASUVORK5CYII=">
+  <link rel="manifest" href="data:application/manifest+json;base64,ewogICJuYW1lIjogIkd5bSBMb2dib2VrIiwKICAic2hvcnRfbmFtZSI6ICJHeW0gTG9nIiwKICAiZGVzY3JpcHRpb24iOiAiUHVzaCAvIEJlbmVuIC8gUHVsbCAvIEZ1bGwgQm9keSB0cmFpbmVyIiwKICAic3RhcnRfdXJsIjogIi4iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMxQjJBNEEiLAogICJ0aGVtZV9jb2xvciI6ICIjMUIyQTRBIiwKICAib3JpZW50YXRpb24iOiAicG9ydHJhaXQiLAogICJpY29ucyI6IFsKICAgIHsic3JjIjogImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBTUFBQUFEQUNBSUFBQURkdnZ0UUFBQUVLVWxFUVZSNG5PM1cwVkZXUVJCRVllT1FEQXpGWUF6QTVMVXNLVVFFdWR6ZTNaNmVPVnZubWZwdnovZkFwNGN2WDRsdTk4bitDeWc2QUpFVWdFZ0tRQ1FGSUpJQ0VFa0JpS1FBUkZJQUlpa0FQZmI1KzdlUFp2L05GWm9JNklZVlZMM1ZDRUJieFF6MzFCbVEwYzBjU2QwQTJhRk13OVFFa04zRVdFbnhnT3dJaGpNS0JtUS9QSXdpQWRrdmphUlVRUGJUd2lnVmtQMmNNQW9HWkw4aWhsSUIyWTlYSi9zdHdnRFpEMVl6KzEweUFObnZWRG43ZFVvRHNwOG5KZnVsS2dLeVh5VXIrNzFxQWJMZkl6SDcxVW9Bc3A4aHZkR0E3T3YzYUNnZysrNmRHZ2ZJdm5pL3BnQ3lEOTI3NW9EcyswNm9MU0Q3c25OcUNNaSs2YlJhQWJLdk9iTW1nT3c3VGk0ZWtIMUJBaEJOQldUZmpuNFhDY2krR2owdkRKQjlML3EzR0VEMnBlaXRBRVJTQVlEc0c5SC9LdzNJdmc1ZHFTZ2creTUwUFFDUlZEbEE5a1hvb3hVQ1pOK0M3Z1Vna2lvQnlMNENLUUdJcE15QTdOOVBlalpBOWkrblZRR0lwQXlBN045TWF3TVFTUjBGWlA5YTJoR0FTQXBBSkhVSWtQMDdhVjhBSXFudGdPeGZTTHNERUVsdEJHVC9Oam9UZ0VnS1FDUzFCWkQ5cStoa0FDSXBBSkhVVVVBLzdqNzdUT250VzM0eElOZG5rSEY1QVBVUFFQNGJSSmNCeVBzWlpGd2VRTTBEa1A4RzBRSElmNFBvQUdTYnBzZXhkNiswQUZEWGFRQzB4QkNBQUFTZ3U5TUFDRURTTkFBQ2tEUU5nQUFrVFFNZ0FFblRBR2c3b043VEFFZzNCQ0FBSlFQaXVSNkFlTklERUU5NkFPSkpEMEE4NlFHSUp6MEE4YVFISUo3MEFNU1RIb0I0MGdNUVQzb0E0a212Q2FERGY5TmI3a29BS2xIdVNnQXFVZTVLOXdGZE5KUTdEWUFVUFFBQ0VJQ0VhUUFFSUdrYUFBRkltZ1pBQUpLbUFSQ0FwR2tBZEFMUUZVTUhQb01zeTc5ckEwRFpBY2gvZytnQTVMOUJkQUR5M3lDNkRFRHZHZ0tRcTYzTFg0RUJvT3dBNUw5QmRER0FydnduUkoyNnFBSkE5SG9BSWlrQWtkUjZRQmlhMDNVU0FLSlhBaEJKN1FLRW9RbDl5QU9BNkdWN0FXR29keC9GQUNENnF4T0FNTlMxR3hJQVJIOENFRW1kQTRTaGZ0MWpBQ0I2N0RRZ0RIWHF0Z0VBMGE4OGdERFVJd1dBQ2doRDZZblhCOUQwL0lBd2xKdCtlZ0NOcmdvZ0RDVzI1TzdMQUdFb3ExVkhCOURRS2dMQ1VFb0xMNzRZRUlicXQvYmM2d0ZocUhMTGJ3MmdXV1VBd2xETmRoeDZGeUFNVld2VGxUY0N3bENkOXAxNEx5QU1WV2pyZlFIVXYyeEFHR3FzNXhBZ0RIWFZjdzRRaGxycU9Rb0lRLzMwbkFhRW9XWjZESUF3MUVtUEJ4Q01ldEF4QThKUUF6MW1RQmhLMStNSGhLRm9QU1VBd1NpVVRpMUFHRXJVVXdzUWh1TDBsQU1Fb3lBNmRRRmhLRVZQWFVBd3FrOG5BQkNNS3RPSkFUVFprSDM1Sm9BR01yS3YzUkRRRUViMmhac0Q2aXJKdnVjNFFHMFkyVGNjRGVnaG1aRjlONzBtZ0o2eW14amk1cWx1Z0o1bmg5SVZ6Zk02QTNvS04vc2FBZWhGaUZuWVJFQ3ZocFY3QVlpa0FFUlNBQ0lwQUpFVWdFZ0tRQ1FGSUpJQ0VFa0JpS1IrQW1pTGxBV2dQcUtrQUFBQUFFbEZUa1N1UW1DQyIsICJzaXplcyI6ICIxOTJ4MTkyIiwgInR5cGUiOiAiaW1hZ2UvcG5nIn0sCiAgICB7InNyYyI6ICJkYXRhOmltYWdlL3BuZztiYXNlNjQsaVZCT1J3MEtHZ29BQUFBTlNVaEVVZ0FBQWdBQUFBSUFDQUlBQUFCN0drT3RBQUFUbWtsRVFWUjRuTzNWZ1pGY09YSUUwTFBqeGdPWmNzYklBRGt2QlVWR0xIZkpHdjZlQnBBQTZtVThBeHI5cXlyLzlmRmYvd0dnb1gvRmZ3RUFFUW9Bb0NrRkFOQ1VBZ0JvU2dFQU5LVUFBSnBTQUFCTktRQ0FwaFFBUUZNS0FLQXBCUURRbEFJQWFFb0JBRFNsQUFDYVVnQUFUU2tBZ0tZVUFFQlRDZ0NnS1FVQTBKUUNBR2hLQVFBMHBRQUFtbElBQUUwcEFJQ21GQUJBVXdxQU8vMzdmLzU3clBpTFlEZ0Z3SG1HSDNjbFFVOEtnSDNGRDdwaTRHNEtnRjNFejdSS29Cc0ZRRXo4Q3U4ai9pM29TUUd3VHZ6T25pTCtwV2hDQVRCWC9KaWVMdjRGdVpnQ1lMejQwYnhWL010eUdRWEFHUEhqMkUzOGkzTUJCY0RYeFk4ZzM4VW5nVU1wQUY0V3YzZFU0clBCV1JRQVQ4V3ZHOC9GcDRVaktBRCtJSDdMZUVkOGZ0aVpBdUQzNHBlTHNlSVR4WVlVQUg4VHYxUE1GcDh4OXFFQStDRittRmdwUG0vc1FBRjBGNzlFWk1VbmtDQUYwRmY4OUxDUCtEUVNvUURhaWQ4YWRoYWZUMVpTQUkzRWp3dW5pTThxYXlpQUZ1SUhoUlBGNTViWkZNRGw0a2VFMDhWbm1Ia1V3SjNpVjRQN3hLZWE0UlRBYmVKbmdydkZKNXlCRk1BOTRxZUJQdUxUemhBSzRBYnhjMEJQOGNublRRcmdiUEVUQVBFdDRNc1V3TUhpbXcvZnhYZUJyMUVBUjRvdlBQd3F2aGU4U2dFY0pyN2s4TG40anZDY0FqaEdmTEhodWZpKzhJUUNPRUI4bWVGcjRydkQ1eFRBN3VJN0RPK0lieENmVUFEN2lxOHVqQkxmSm41TEFld292cTR3UTN5eitBY0ZzSjM0bHNJODhmM2lad3BnSS9IbGhEWGl1OFozQ21BWDhaMkVsZUlieDRjQzJFRjhGU0Vsdm4zTktZQ3crQVpDVm53SE8xTUFNZkhGZzMzRTk3RW5CWkFSM3pmWVRYd3JHMUlBcThYWERIWVczOUJXRk1CUzhlMkMvY1gzdEE4RnNFNThyK0FVOFcxdFFnR3NFRjhuT0ZGOGM2K25BS2FMYnhHY0s3Ni9kMU1BYzhYM0IwNFgzK0tMS1lCWjRtc0RONGx2OUpVVXdCVHhiWUg3eFBmNlBncGd2UGlld0szaTIzMFpCVEJTZkQyZ2cvaW1YME1CREJQZkN1Z2p2dTkzVUFCanhQY0J1b2x2L1FVVXdBRHhUWUNlNHJ0L09nWHdydmdPUUdmeEMzQTBCZkIxOGRFSHZvdGZnME1wZ0MrS1R6endzL2hOT0pFQytJcjRyQU8vaWwrRzR5aUFsOFduSEtqRTc4TlpGTUJyNHZNTmZDNStKUTZpQUY0UW4yemdpZml0T0lVQ2VDbyswOEJ6OFl0eEJBWHdTSHlhZ1ZmRjc4YitGTUNmeGVjWStKcjQ5ZGljQXZpRCtBUUQ3NGpma0owcGdNL0VaeGQ0WC95U2JFc0JsT0pUQzR3U3Z5ZDdVZ0MvRjU5WFlLejRWZG1RQXZpTitLUUNNOFJ2eTI0VXdEL0ZaeFNZSjM1aHRxSUEvaVkrbmNCczhUdXpEd1h3bC9oY0FtdkVyODBtRk1BUDhZa0VWb3JmbkIwb2dHL2lzd2lzRjc4OGNRckE5WWUrNHZjbnEzc0J4T2NQeUlwZm9hRFdCUkNmUEdBSDhWdVUwcmNBNGpNSDdDTitrU0thRmtCODJvRGR4Ty9TZWdvQTRKdjRYVnF2WXdIRTV3ellVL3c2TGRhdUFPSVRCdXdzZnFOVzZsVUE4ZGtDOWhlL1ZNczBLb0Q0VkFHbmlOK3JOYm9VUUh5ZWdMUEVyOVlDQ2dEZ04rSlhhNEVXQlJDZkpPQkU4ZHMxMi8wRkVKOGg0Rnp4Q3piVjVRVVFueDdnZFBFN05vOENBUGhNL0k3TmMzTUJ4T2NHdUVQOG1rMXliUUhFSndhNFNmeW16WEJuQWNSbkJiaFAvTElOcHdBQUhvbGZ0dUV1TElENGxBQzNpdCszc1c0cmdQaDhBSGVMWDdtQnJpcUErR1FBSGNSdjNTZ0tBT0ExOFZzM3lqMEZFSjhKb0kvNHhSdmlrZ0tJVHdQUVRmenV2VThCQUh4Ri9PNjk3NFlDaU04QjBGUDgrcjNwK0FLSVR3RFFXZndHS2dDQWpQZ043RnNBOFc4UEVMK0VIUXNnL3RVQnZvdmZRd1VBa0JHL2g3MEtJUDY5QVg0V3Y0cGRDaUQrcFFGK0ZiK05DZ0FnSTM0Yjd5K0ErRGNHcU1RdnBBSUF5SWhmeUpzTElQNTFBVDRYdjVOM0ZrRDh1d0k4RWIrV0NnQWdJMzR0Ynl1QStCY0ZlQzUrTXhVQVFFYjhadDVUQVBGdkNmQ3ErT1ZVQUFBWjhjdDVRd0hFdnlMQTE4VHZwd0lBeUlqZno3TUxJUDc5QU40UnY2S25Ga0Q4eXdHOEwzNUxGUUJBUnZ5V25sY0E4VzhHTUVyOG9pb0FnSXo0UlQycEFPSmZDMkNzK0YxVkFBQVo4YnQ2UmdIRXZ4UEFEUEhycWdBQU11TFhkZmNDaUg4aGdIbmlOMVlCQUdURWI2d0NBTWlJMzloOUN5RCtiUUJtaTE5YUJRQ1FFYiswT3haQS9Lc0FyQkcvdHdvQUlDTitiL2NxZ1BqM0FGZ3BmblVWQUVCRy9PcnVVZ0R4THdHd1h2ejJLZ0NBalBqdFZRQUFHZkhibXkrQStEY0FTRkVBK1c4QUVORzZBT0wvUGtDV0FnQm9TZ0VBTk5XMEFPTC9POEFPRkFCQVUrMEtJUDZQQSt4REFRQTBwUUFBbW1wVUFQSC9HbUEzQ2dDZ0tRVUEwRlNMQW9qL3l3QjdVZ0FBVFNrQWdLWXVMNEQ0L3d1d013VUEwSlFDQUdqcTJnS0kvN01BKzFNQUFFMHBBSUNtTGl5QStIOEtjQW9GOEpuLzNUWHh1WUZicFplN3pJekhLZ0NqQVB3bHZkeGxaanhXQVJnRjRDL3A1UzR6NDdGWEZZQlJBTjZVWHU0eWs5NnJBSXdDOEVONnVjdE1lcThDTUFyQUQrbmxMalBwdlFyQUtBQS9wSmU3ektUM1hsSUFSZ0Y0WDNxNXk4eDdzZ0l3Q3NBMzZlVXVNKy9KQ3NBb0FOK2tsN3ZNdkNjckFLTUFmSk5lN2pMem5ueDhBUmdGWUlqMGNwZVorbW9GWUJTQXBsdXZBSXdDMEhUckZZQlJBSnB1L2NFRllCU0FVZExMWFdiMnd4V0FVWUR1MHN0ZFp2YkRGWUJSZ083U3kxMW05c01WZ0ZHQTd0TExYV2Iyd3hXQVVZRHUwc3RkWnZiRGp5d0Fvd0FNbEY3dU1ndmVyZ0NNQXJTV1h1NHlDOTZ1QU5xTlF2b3BaU0xMeitmU1ExSEdHNGRRQU8xR0lmMlVNZ3ZHblZlbGg2S01OdzZoQU5xTlF2b3BaUmFNTzY5S0QwVVpieHppc0FJdzd0N0lTdW1oS09PTm95aUFYcU9RZmtxWk5lUE9TOUpEVWNZYlIxRUF2VVloL1pReWE4YWRsNlNIb293M2pxSUFlbzFDK2lsbDFvdzdMMGtQUlJsdkhFVUI5QnFGOUZQS3JCbDNYcEllaWpMZU9Jb0M2RFVLNmFlVVdUUHV2Q1E5RkdXOGNaUmpDc0M0ZXlPTHBZZWlqRGNPcEFBYWpVTDZLV1dXalR2UHBZZWlqRGNPcEFBYWpVTDZLV1dXalR2UHBZZWlqRGNPcEFBYWpVTDZLV1dXalR2UHBZZWlqRGNPcEFBYWpVTDZLV1dXalR2UHBZZWlqRGNPcEFBYWpVTDZLV1dXalR2UHBZZWlqRGNPcEFBYWpVTDZLV1dXalR2UHBZZWlqRGNPcEFBYWpVTDZLV1dXalR2UHBZZWlqRGNPZEVBQkdIZHZaTDMwVUpUeHhyRVVRSmRSU0QrbHpNcHg1NkgwVUpUeHhyRVVRSmRSU0QrbHpNcHg1NkgwVUpUeHhyRVVRSmRSU0QrbHpNcHg1NkgwVUpUeHhyRVVRSmRSU0QrbHpNcHg1NkgwVUpUeHhyRVVRSmRSU0QrbHpNcHg1NkgwVUpUeHhyRVVRSmRSU0QrbHpNcHg1NkgwVUpUeHhyRVVRSmRSU0QrbHpNcHg1NkgwVUpUeHhyRVVRSmRSU0QrbHpNcHg1NkgwVUpUeHhyRVV3TmFqSUNMZG9nQVVnSWcwalFKUUFDTFNOQXBnNmZWWEFDS3lUMVlXd05nT1VBQWlJbTlGQVNnQUVXa2FCYUFBUktScEZJQUNFSkdtVVFBS1FFU2FSZ0VvQUJGcEdnV2dBRVNrYVJTQUFoQ1JwbEVBQ2tCRW1rWUJLQUFSYVJvRm9BQkVwR2tVZ0FJUWthWlJBQXBBUkpwR0FTZ0FFV2thQmFBQVJLUnBGSUFDRUpHbVVRQUtRRVNhUmdFb0FCRnBHZ1dnQUVTa2FSU0FBaENScGxFQUNrQkVta1lCS0FBUmFSb0ZvQUJFcEdrVWdBSVFrYVpSQUFwQVJKcEdBU2dBRVdrYUJiQzZBOUpmWEVUa1J3NjkvZ3BBUk9UZEtBQUY4Q1BlU0VSNktNcDQ0MWdLb01zb3BKOVNadVc0ODFCNktNcDQ0MWdLb01zb3BKOVNadVc0ODFCNktNcDQ0MWdLb01zb3BKOVNadVc0ODFCNktNcDQ0MWdLb01zb3BKOVNadVc0ODFCNktNcDQ0MWdLb01zb3BKOVNadVc0ODFCNktNcDQ0MWdLb01zb3BKOVNadVc0ODFCNktNcDQ0MWdLb01zb3BKOVNadVc0ODFCNktNcDQ0MWdLb01zb3BKOVNadVc0ODFCNktNcDQ0MWdLb01zb3BKOVNadVc0ODFCNktNcDQ0MWk3RjhDYURraC84VExlU0VSNktNcDQ0MEREYjdVQ0dCeHZKQ0k5RkdXOGNTQUYwR2dVMGs4cHMyemNlUzQ5RkdXOGNTQUYwR2dVMGs4cHMyemNlUzQ5RkdXOGNTQUYwR2dVMGs4cHMyemNlUzQ5RkdXOGNTQUYwR2dVMGs4cHMyemNlUzQ5RkdXOGNTQUYwR2dVMGs4cHMyemNlUzQ5RkdXOGNTQUYwR2dVMGs4cHMyemNlUzQ5RkdXOGNhQXpDbUJCQjZTL2VCbHZKQ0k5RkdXOGNaUVpoMW9CREk0M0VwRWVpakxlT0lvQzZEVUs2YWVVV1RQdXZDUTlGR1c4Y1JRRjBHc1UwazhwczJiY2VVbDZLTXA0NHlnS29OY29wSjlTWnMyNDg1TDBVSlR4eGxFVVFLOVJTRCtsekpweDV5WHBvU2pqamFPY1ZBQ3pPeUQ5eGN0NEl4SHBvU2pqalVOTXV0SUtZSEM4a1lqMFVKVHh4aUVVZ0ZHQTF0TExYV2JCMnhXQVVZRFcwc3RkWnNIYkZZQlJnTmJTeTExbXdkdlBLNENwSFpEKzRtWGlTd0szU2k5M21ka1BuM2VpRmNEZ3hKY0VicFZlN2pLekg2NEFqQUowbDE3dU1yTWZyZ0NNQW5TWFh1NHlzeCt1QUl3Q2RKZGU3akt6SDM1cUFjenJnUFFYTHhOZkVyaFZlcm5MVEgzMTFQdXNBQVludmlSd3EvUnlsNW42YWdWZ0ZJQ21XNjhBakFMUWRPdlBMb0JKSFpEKzRtWGlTd0szU2k5M21YbFBubjJjRmNEZ3hKY0VicFZlN2pMem5xd0FqQUx3VFhxNXk4eDdzZ0l3Q3NBMzZlVXVNKy9KTnhUQWpBNUlmL0V5OFNXQlc2V1h1OHlrOXk2NHpBcGdjT0pMQXJkS0wzZVpTZTlWQUVZQitDRzkzR1VtdlZjQkdBWGdoL1J5bDVuMDNuc0tZSGdIcEw5NG1maVN3SzNTeTExbXhtUFhuR1VGTURqeEpZRmJwWmU3ekl6SEtnQ0FwaFFBUUZPM0ZZQU9BSGhpMlUxV0FBQjdVUUFBVGQxWkFEb0E0SE1yRDdJQ0FOaUlBZ0JvNnVZQzBBRUFsY1hYV0FFQTdFSUJBRFIxZndIb0FJQmZyVC9GQ2dCZ0N3b0FvS2t1QmFBREFINFd1Y01LQUNCUEFRQTAxYXNBZEFEQWQ2a2pyQUFBd2pvV2dBNEFDRjVnQlFDUXBBQUFtdXBiQURvQTZDeDdmaFVBUUV6M0F0QUJRRS94MjZzQUFETGl0MWNCQUdURWIrOFdCYUFEZ0c3aVYxY0JBR1RFcis1R0JhQURnRDdpOTFZQkFHVEU3KzEyQmFBRGdBN2lsMVlCQUdURUwrMm1CYUFEZ0x2RmI2d0NBTWlJMzFnRkFKQVJ2N0ZiRjRBT0FHNFZ2NjRLQUNBamZsMFBLQUFkQU53bmZsY1ZBRUJHL0s0ZVV3QTZBTGhKL0tJcUFJQ00rRVU5ckFCMEFIQ0grQzFWQUFBWjhWdDZaQUhvQU9CMDhTdDZjQUhvQU9CYzhmdXBBQUF5NHZmeitBTFFBY0NKNHBkVEFRQmt4Qy9uSlFXZ0E0Q3p4RyttQWdESWlOL01xd3BBQndDbmlGOUxCUUNRRWIrV0Z4YUFEZ0QyRjcrVDF4YUFEZ0IyRnIrUUNnQWdJMzRoTHk4QUhRRHNLWDRiRlFCQVJ2dzJ0aWdBSFFEc0puNFZHeFdBRGdEMkViK0hDZ0FnSTM0UDJ4V0FEZ0IyRUwrRVRRdEFCd0JaOFJ1b0FBQXk0amV3ZFFIb0FDQWxmdjNlZEVNQmZPZ0FZTG40M1h1ZkFnRDRpdmpkZTk4bEJmQ2hBNENGNGhkdmlIc0s0RU1IQUV2RWI5MG9DZ0RnTmZGYk44cFZCZkNoQTRESjRsZHVvTnNLNEVNSEFOUEU3OXRZRnhiQWh3NEFKb2hmdHVFVUFNQWo4Y3MyM0owRjhLRURnS0hpTjIyR2F3dmdRd2NBZzhTdjJTUTNGOENIRGdEZUZyOWo4eWdBZ00vRTc5ZzhseGZBaHc0QTNoQy9ZRlBkWHdBZk9nRDRrdmp0bXExRkFYem9BT0JGOGF1MWdBSUErSTM0MVZxZ1N3Rjg2QURnc2ZpOVdxTlJBWHpvQU9DQitLVmFwbGNCZk9nQTRGUHhHN1ZTdXdMNDBBRkFJWDZkRnV0WUFCODZBUGhGL0M2dHB3QUF2b25mcGZXYUZzQ0hEZ0IrRXI5SUVYMEw0RU1IQVA4dmZvdFNXaGZBaHc2QTl1SlhLS2g3QVh6b0FHZ3Nmbit5Rk1BMzhTa0Uxb3RmbmpnRjhFTjhGb0dWNGpkbkJ3cmdML0dKQk5hSVg1dE5LSUMvaWM4bE1Gdjh6dXhEQWZ4VGZEcUJlZUlYWmlzSzREZmlNd3JNRUw4dHUxRUF2eGVmVkdDcytGWFprQUlveGVjVkdDVitUL2FrQUQ0VG4xcmdmZkZMc2kwRjhBZngyUVhlRWI4aE8xTUFmeGFmWU9CcjR0ZGpjd3Jna2ZnY0E2K0szNDM5S1lDbjR0TU1QQmUvR0VkUUFDK0l6elR3UlB4V25FSUJ2Q1krMmNEbjRsZmlJQXJnWmZINUJpcngrM0FXQmZBVjhTa0hmaFcvRE1kUkFGOFVuM1hnWi9HYmNDSUY4SFh4aVFlK2kxK0RReW1BZDhWSEh6cUxYNENqS1lBQjRqc0FQY1YzLzNRS1lJejRKa0EzOGEyL2dBSVlKcjRQMEVkODMrK2dBRWFLYndWMEVOLzBheWlBOGVMckFiZUtiL2RsRk1BVThUMkIrOFQzK2o0S1lKYjR0c0JONGh0OUpRVXdWM3h0NEhUeExiNllBcGd1dmo5d3J2aiszazBCckJEZklqaFJmSE92cHdEV2lhOFRuQ0srclUwb2dLWGlld1g3aSs5cEh3cGd0Zmgyd2M3aUc5cUtBc2lJcnhuc0pyNlZEU21BbVBpK3dUN2krOWlUQWdpTEx4NWt4WGV3TXdXUUY5OUFTSWx2WDNNS1lCZnhWWVNWNGh2SGh3TFlTbnduWVkzNHJ2R2RBdGhPZkRsaG52aCs4VE1Gc0tQNGxzSU04YzNpSHhUQXZ1THJDcVBFdDRuZlVnQzdpNjh1dkNPK1FYeENBUndndnNQd05mSGQ0WE1LNEJqeFpZYm40dnZDRXdyZ01QSEZocy9GZDRUbkZNQ1I0a3NPdjRydkJhOVNBQWVMTHp4OEY5OEZ2a1lCbkMyKytSRGZBcjVNQWR3Z2ZnTG9LVDc1dkVrQjNDTitEdWdqUHUwTW9RQnVFejhOM0MwKzRReWtBTzRVUHhQY0p6N1ZES2NBTGhlL0dwd3VQc1BNb3dCYWlCOFJUaFNmVzJaVEFJM0VEd3FuaU04cWF5aUFkdUxIaFozRjU1T1ZGRUJmOFZ2RFB1TFRTSVFDNkM1K2VzaUtUeUJCQ29BZjRwZUlsZUx6eGc0VUFIOFRQMHpNRnA4eDlxRUErTDM0bldLcytFU3hJUVhBSDhRdkYrK0l6dzg3VXdBOEZiOWxQQmVmRm82Z0FIaFovTHBSaWM4R1oxRUFmRjM4M3ZGZGZCSTRsQUpnalBnUjdDYit4Ym1BQW1DOCtIRzhWZnpMY2hrRndGenhvM202K0Jma1lncUFkZUxIOUJUeEwwVVRDb0NZK0ozZFIveGIwSk1DWUJmeEsremkwNDBDWUYveE0rM2NjemNGd0huaUI5Mmg1dzRLZ0RzNTd2QkhDZ0NnS1FVQTBKUUNBR2hLQVFBMHBRQUFtbElBQUUwcEFJQ21GQUJBVXdvQW9Da0ZBTkNVQWdCb1NnRUFOS1VBQUpwU0FBQk5LUUNBcGhRQVFGTUtBS0FwQlFEUWxBSUFhRW9CQURTbEFBQ2FVZ0FBVFNrQWdLWVVBRUJUQ2dDZ3FmOERJb0Q0NTBRNlJCd0FBQUFBU1VWT1JLNUNZSUk9IiwgInNpemVzIjogIjUxMng1MTIiLCAidHlwZSI6ICJpbWFnZS9wbmcifQogIF0KfQ==">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  :root {
+    --teal: #1A7A6E; --teal-l: #d1ece9;
+    --red: #B03A2E;  --red-l: #fadbd8;
+    --purple: #6C3483; --purple-l: #ead9f5;
+    --green: #1E6B3C; --green-l: #d5f0e3;
+    --navy: #1B2A4A; --grey: #f2f4f7; --border: #dde3ea;
+  }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+         background: var(--grey); color: #1a1a2e; min-height: 100vh; }
+
+  /* Header */
+  .app-header { background: var(--navy); color: white; padding: 18px 20px 14px;
+                position: sticky; top: 0; z-index: 100;
+                box-shadow: 0 2px 12px rgba(0,0,0,0.25); }
+  .app-header h1 { font-size: 19px; font-weight: 700; letter-spacing: .3px; }
+  .app-header p  { font-size: 12px; opacity: .7; margin-top: 2px; }
+
+  /* Day tabs */
+  .tab-bar { display: flex; background: white; border-bottom: 2px solid var(--border);
+             overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .tab-bar::-webkit-scrollbar { display: none; }
+  .tab { flex: 1; min-width: 72px; padding: 12px 6px 10px; text-align: center;
+         font-size: 12px; font-weight: 600; color: #888; cursor: pointer;
+         border-bottom: 3px solid transparent; transition: all .2s; white-space: nowrap; }
+  .tab.active { color: var(--navy); border-bottom-color: var(--navy); }
+  .tab .tab-icon { font-size: 18px; display: block; margin-bottom: 2px; }
+
+  /* Day view */
+  .day-view { display: none; padding: 16px 14px 100px; }
+  .day-view.active { display: block; }
+
+  .day-banner { border-radius: 14px; padding: 16px 18px; margin-bottom: 16px; color: white; }
+  .day-banner h2 { font-size: 18px; font-weight: 700; }
+  .day-banner p  { font-size: 13px; opacity: .85; margin-top: 4px; }
+
+  /* Exercise card */
+  .exercise-card { background: white; border-radius: 14px; margin-bottom: 12px;
+                   box-shadow: 0 1px 6px rgba(0,0,0,.07); overflow: hidden; }
+  .exercise-header { padding: 14px 16px 10px; display: flex; justify-content: space-between; align-items: flex-start; }
+  .exercise-name { font-size: 15px; font-weight: 700; color: var(--navy); flex: 1; }
+  .exercise-meta { font-size: 11px; color: #888; margin-top: 3px; }
+  .exercise-tip  { font-size: 11px; color: #aaa; font-style: italic; margin-top: 2px; }
+
+  /* Sets table */
+  .sets-table { width: 100%; border-collapse: collapse; }
+  .sets-table th { font-size: 11px; font-weight: 600; color: #aaa; text-transform: uppercase;
+                   padding: 6px 16px; text-align: left; background: #fafafa;
+                   border-top: 1px solid var(--border); }
+  .sets-table th:last-child { text-align: center; }
+  .set-row { border-top: 1px solid var(--border); }
+  .set-row td { padding: 10px 16px; vertical-align: middle; }
+  .set-num { font-size: 13px; font-weight: 700; color: #bbb; width: 32px; }
+  .target { font-size: 12px; color: #888; width: 90px; }
+
+  /* Inputs */
+  .input-group { display: flex; gap: 8px; align-items: center; }
+  .log-input { width: 58px; padding: 8px 10px; border: 1.5px solid var(--border);
+               border-radius: 9px; font-size: 15px; text-align: center;
+               font-family: inherit; color: var(--navy); font-weight: 600;
+               background: var(--grey); -webkit-appearance: none; }
+  .log-input:focus { outline: none; border-color: var(--teal); background: white; }
+  .input-label { font-size: 11px; color: #aaa; }
+  .done-btn { width: 34px; height: 34px; border-radius: 50%; border: none;
+              background: var(--border); color: #aaa; font-size: 18px; cursor: pointer;
+              display: flex; align-items: center; justify-content: center;
+              transition: all .2s; flex-shrink: 0; }
+  .done-btn.checked { background: var(--teal); color: white; }
+
+  /* Progress bar */
+  .progress-wrap { padding: 10px 16px 14px; }
+  .progress-label { font-size: 11px; color: #aaa; margin-bottom: 5px;
+                    display: flex; justify-content: space-between; }
+  .progress-bar { height: 6px; background: var(--border); border-radius: 99px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 99px; transition: width .4s ease; }
+
+  /* Summary card */
+  .summary-card { background: white; border-radius: 14px; padding: 18px;
+                  margin-bottom: 12px; box-shadow: 0 1px 6px rgba(0,0,0,.07); }
+  .summary-card h3 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 12px; }
+  .summary-row { display: flex; justify-content: space-between; align-items: center;
+                 padding: 7px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+  .summary-row:last-child { border: none; }
+  .summary-val { font-weight: 700; color: var(--teal); }
+
+  /* Reset button */
+  .reset-btn { width: 100%; padding: 14px; border: 1.5px solid var(--border);
+               background: white; border-radius: 12px; font-size: 14px;
+               color: #888; cursor: pointer; margin-top: 8px; }
+
+  /* Toast */
+  .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
+           background: var(--navy); color: white; padding: 12px 22px; border-radius: 99px;
+           font-size: 13px; font-weight: 600; opacity: 0; transition: all .3s; z-index: 999;
+           white-space: nowrap; pointer-events: none; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="app-header">
+  <h1>🏋️ Gym Logboek</h1>
+  <p>Week van 9 maart 2026 · Push / Benen / Pull / Full Body</p>
+</div>
+
+<div class="tab-bar" id="tabBar"></div>
+<div id="views"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const SCHEMA = [
+  {
+    id: "ma", label: "Ma", date: "9 mrt", icon: "💪", name: "PUSH",
+    focus: "Borst · Schouders · Triceps", color: "#1A7A6E", colorL: "#d1ece9",
+    exercises: [
+      { name: "Bench Press", meta: "4 sets · 8–10 herh.", tip: "Compound basis", sets: 4, reps: "8–10" },
+      { name: "Incline Dumbbell Press", meta: "3 sets · 10–12 herh.", tip: "Bovenste borst", sets: 3, reps: "10–12" },
+      { name: "Shoulder Press (Machine)", meta: "3 sets · 10–12 herh.", tip: "Schouders", sets: 3, reps: "10–12" },
+      { name: "Lateral Raises", meta: "3 sets · 12–15 herh.", tip: "Zijkant schouder", sets: 3, reps: "12–15" },
+      { name: "Tricep Pushdown", meta: "3 sets · 12–15 herh.", tip: "Isolatie triceps", sets: 3, reps: "12–15" },
+      { name: "Overhead Tricep Ext.", meta: "2 sets · 12–15 herh.", tip: "Lange kop triceps", sets: 2, reps: "12–15" },
+    ]
+  },
+  {
+    id: "di", label: "Di", date: "10 mrt", icon: "🦵", name: "BENEN",
+    focus: "Quads · Hamstrings · Billen · Kuiten", color: "#B03A2E", colorL: "#fadbd8",
+    exercises: [
+      { name: "Leg Press", meta: "4 sets · 10–12 herh.", tip: "Veel volume", sets: 4, reps: "10–12" },
+      { name: "Goblet Squat", meta: "3 sets · 12 herh.", tip: "Techniek + quad focus", sets: 3, reps: "12" },
+      { name: "Leg Curl (Machine)", meta: "3 sets · 10–12 herh.", tip: "Hamstrings", sets: 3, reps: "10–12" },
+      { name: "Romanian Deadlift", meta: "3 sets · 10 herh.", tip: "Hamstrings + billen", sets: 3, reps: "10" },
+      { name: "Hip Thrust", meta: "3 sets · 12–15 herh.", tip: "Glutes activatie", sets: 3, reps: "12–15" },
+      { name: "Calf Raises", meta: "4 sets · 15–20 herh.", tip: "Kuiten", sets: 4, reps: "15–20" },
+    ]
+  },
+  {
+    id: "wo", label: "Wo", date: "11 mrt", icon: "🏋️", name: "PULL",
+    focus: "Rug · Biceps · Core", color: "#6C3483", colorL: "#ead9f5",
+    exercises: [
+      { name: "Lat Pulldown", meta: "4 sets · 8–10 herh.", tip: "Breedte rug", sets: 4, reps: "8–10" },
+      { name: "Seated Cable Row", meta: "3 sets · 10–12 herh.", tip: "Dikte rug", sets: 3, reps: "10–12" },
+      { name: "Single-arm DB Row", meta: "3 sets · 10–12 herh.", tip: "Eenzijdige kracht", sets: 3, reps: "10–12" },
+      { name: "Face Pulls", meta: "3 sets · 15 herh.", tip: "Schouder gezondheid", sets: 3, reps: "15" },
+      { name: "Dumbbell Curl", meta: "3 sets · 10–12 herh.", tip: "Biceps", sets: 3, reps: "10–12" },
+      { name: "Plank", meta: "3 sets · 45–60 sec", tip: "Core stabiliteit", sets: 3, reps: "45–60s" },
+    ]
+  },
+  {
+    id: "do", label: "Do", date: "12 mrt", icon: "⚡", name: "FULL BODY",
+    focus: "Heel lichaam · Licht gewicht · Hoog volume", color: "#1E6B3C", colorL: "#d5f0e3",
+    exercises: [
+      { name: "Goblet Squat (licht)", meta: "3 sets · 15 herh.", tip: "60–70% gewicht", sets: 3, reps: "15" },
+      { name: "Dumbbell Row", meta: "3 sets · 15 herh.", tip: "Voel de spier", sets: 3, reps: "15" },
+      { name: "DB Shoulder Press", meta: "3 sets · 15 herh.", tip: "Controle boven snelheid", sets: 3, reps: "15" },
+      { name: "Romanian Deadlift (licht)", meta: "3 sets · 15 herh.", tip: "Stretch & activatie", sets: 3, reps: "15" },
+      { name: "Cable Fly / Pec Deck", meta: "3 sets · 15 herh.", tip: "Borst uitrekken", sets: 3, reps: "15" },
+      { name: "Core Circuit", meta: "3 ronden · 30 sec elk", tip: "Plank + crunches", sets: 3, reps: "30s" },
+    ]
+  }
+];
+
+// ── State ──────────────────────────────────────────────────────────
+let state = loadState();
+
+function loadState() {
+  try {
+    const s = localStorage.getItem('gymlog_v1');
+    return s ? JSON.parse(s) : {};
+  } catch(e) { return {}; }
+}
+function saveState() {
+  try { localStorage.setItem('gymlog_v1', JSON.stringify(state)); } catch(e) {}
+}
+function getKey(dayId, exIdx, setIdx, field) {
+  return `${dayId}_${exIdx}_${setIdx}_${field}`;
+}
+function getDoneKey(dayId, exIdx, setIdx) {
+  return `${dayId}_${exIdx}_${setIdx}_done`;
+}
+
+// ── Build UI ───────────────────────────────────────────────────────
+const tabBar = document.getElementById('tabBar');
+const viewsEl = document.getElementById('views');
+
+SCHEMA.forEach((day, di) => {
+  // Tab
+  const tab = document.createElement('div');
+  tab.className = 'tab' + (di === 0 ? ' active' : '');
+  tab.innerHTML = `<span class="tab-icon">${day.icon}</span>${day.label}<br><small style="font-weight:400;font-size:10px">${day.date}</small>`;
+  tab.onclick = () => switchTab(di);
+  tabBar.appendChild(tab);
+
+  // View
+  const view = document.createElement('div');
+  view.className = 'day-view' + (di === 0 ? ' active' : '');
+  view.id = 'view_' + day.id;
+
+  let html = `
+    <div class="day-banner" style="background:${day.color}">
+      <h2>${day.icon} ${day.name}</h2>
+      <p>${day.focus}</p>
+    </div>`;
+
+  day.exercises.forEach((ex, ei) => {
+    const totalSets = ex.sets;
+    html += `<div class="exercise-card" id="card_${day.id}_${ei}">
+      <div class="exercise-header">
+        <div>
+          <div class="exercise-name">${ex.name}</div>
+          <div class="exercise-meta">${ex.meta}</div>
+          <div class="exercise-tip">💡 ${ex.tip}</div>
+        </div>
+      </div>
+      <table class="sets-table">
+        <tr>
+          <th style="width:32px">#</th>
+          <th>Doel</th>
+          <th>Gewicht (kg)</th>
+          <th>Reps</th>
+          <th style="text-align:center">✓</th>
+        </tr>`;
+
+    for (let si = 0; si < totalSets; si++) {
+      const wKey = getKey(day.id, ei, si, 'w');
+      const rKey = getKey(day.id, ei, si, 'r');
+      const dKey = getDoneKey(day.id, ei, si);
+      const wVal = state[wKey] || '';
+      const rVal = state[rKey] || '';
+      const done = state[dKey] || false;
+      html += `
+        <tr class="set-row" id="setrow_${day.id}_${ei}_${si}">
+          <td class="set-num">${si+1}</td>
+          <td class="target">${ex.reps}</td>
+          <td>
+            <div class="input-group">
+              <input class="log-input" type="number" inputmode="decimal" placeholder="—"
+                value="${wVal}"
+                onchange="logVal('${day.id}',${ei},${si},'w',this.value)"
+                onfocus="this.select()">
+              <span class="input-label">kg</span>
+            </div>
+          </td>
+          <td>
+            <div class="input-group">
+              <input class="log-input" type="number" inputmode="numeric" placeholder="—"
+                value="${rVal}"
+                onchange="logVal('${day.id}',${ei},${si},'r',this.value)"
+                onfocus="this.select()">
+              <span class="input-label">reps</span>
+            </div>
+          </td>
+          <td style="text-align:center">
+            <button class="done-btn ${done?'checked':''}"
+              onclick="toggleDone('${day.id}',${ei},${si})"
+              id="donebtn_${day.id}_${ei}_${si}">✓</button>
+          </td>
+        </tr>`;
+    }
+
+    html += `</table>
+      <div class="progress-wrap">
+        <div class="progress-label">
+          <span id="prog_label_${day.id}_${ei}">Sets voltooid</span>
+          <span id="prog_count_${day.id}_${ei}">0 / ${totalSets}</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="prog_${day.id}_${ei}"
+               style="background:${day.color};width:0%"></div>
+        </div>
+      </div>
+    </div>`;
+  });
+
+  // Summary
+  html += `<div class="summary-card">
+    <h3>📊 Dagoverzicht</h3>
+    <div id="summary_${day.id}"></div>
+  </div>
+  <button class="reset-btn" onclick="resetDay('${day.id}')">🔄 Dag resetten</button>`;
+
+  view.innerHTML = html;
+  viewsEl.appendChild(view);
+
+  // Init progress bars
+  day.exercises.forEach((ex, ei) => updateProgress(day.id, ei, ex.sets));
+  updateSummary(day.id, di);
+});
+
+// ── Logic ──────────────────────────────────────────────────────────
+function switchTab(idx) {
+  document.querySelectorAll('.tab').forEach((t,i) => t.classList.toggle('active', i===idx));
+  document.querySelectorAll('.day-view').forEach((v,i) => v.classList.toggle('active', i===idx));
+}
+
+function logVal(dayId, ei, si, field, val) {
+  state[getKey(dayId, ei, si, field)] = val;
+  saveState();
+  updateSummary(dayId, SCHEMA.findIndex(d=>d.id===dayId));
+}
+
+function toggleDone(dayId, ei, si) {
+  const key = getDoneKey(dayId, ei, si);
+  state[key] = !state[key];
+  saveState();
+  const btn = document.getElementById(`donebtn_${dayId}_${ei}_${si}`);
+  btn.classList.toggle('checked', state[key]);
+  const dayIdx = SCHEMA.findIndex(d=>d.id===dayId);
+  updateProgress(dayId, ei, SCHEMA[dayIdx].exercises[ei].sets);
+  updateSummary(dayId, dayIdx);
+  if (state[key]) showToast('Set gelogd ✓');
+}
+
+function updateProgress(dayId, ei, totalSets) {
+  let done = 0;
+  for (let si=0; si<totalSets; si++) {
+    if (state[getDoneKey(dayId, ei, si)]) done++;
+  }
+  const pct = Math.round((done/totalSets)*100);
+  const fill = document.getElementById(`prog_${dayId}_${ei}`);
+  const count = document.getElementById(`prog_count_${dayId}_${ei}`);
+  if (fill) fill.style.width = pct + '%';
+  if (count) count.textContent = `${done} / ${totalSets}`;
+}
+
+function updateSummary(dayId, dayIdx) {
+  const day = SCHEMA[dayIdx];
+  const el = document.getElementById(`summary_${dayId}`);
+  if (!el) return;
+  let totalSets = 0, doneSets = 0, totalVol = 0;
+  day.exercises.forEach((ex, ei) => {
+    for (let si=0; si<ex.sets; si++) {
+      totalSets++;
+      const done = state[getDoneKey(dayId, ei, si)];
+      if (done) {
+        doneSets++;
+        const w = parseFloat(state[getKey(dayId,ei,si,'w')])||0;
+        const r = parseInt(state[getKey(dayId,ei,si,'r')])||0;
+        totalVol += w*r;
+      }
+    }
+  });
+  el.innerHTML = `
+    <div class="summary-row"><span>Sets voltooid</span><span class="summary-val">${doneSets} / ${totalSets}</span></div>
+    <div class="summary-row"><span>Totaal volume</span><span class="summary-val">${totalVol > 0 ? totalVol.toLocaleString('nl') + ' kg' : '—'}</span></div>
+    <div class="summary-row"><span>Voortgang</span><span class="summary-val">${Math.round((doneSets/totalSets)*100)}%</span></div>`;
+}
+
+function resetDay(dayId) {
+  if (!confirm('Wil je alle data voor deze dag wissen?')) return;
+  const dayIdx = SCHEMA.findIndex(d=>d.id===dayId);
+  const day = SCHEMA[dayIdx];
+  day.exercises.forEach((ex,ei) => {
+    for (let si=0; si<ex.sets; si++) {
+      delete state[getKey(dayId,ei,si,'w')];
+      delete state[getKey(dayId,ei,si,'r')];
+      delete state[getDoneKey(dayId,ei,si)];
+      const btn = document.getElementById(`donebtn_${dayId}_${ei}_${si}`);
+      if (btn) btn.classList.remove('checked');
+      const wIn = document.querySelector(`#setrow_${dayId}_${ei}_${si} input[inputmode="decimal"]`);
+      const rIn = document.querySelector(`#setrow_${dayId}_${ei}_${si} input[inputmode="numeric"]`);
+      if (wIn) wIn.value = '';
+      if (rIn) rIn.value = '';
+      updateProgress(dayId, ei, ex.sets);
+    }
+  });
+  saveState();
+  updateSummary(dayId, dayIdx);
+  showToast('Dag gereset 🔄');
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+</script>
+</body>
+</html>
